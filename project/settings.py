@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "django_rq",
     'chat',
     'django_adminlte',
     'django_adminlte_theme',
@@ -120,3 +121,12 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_REDIRECT_URL = '/'
+USE_TZ = False
+
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+    },
+}

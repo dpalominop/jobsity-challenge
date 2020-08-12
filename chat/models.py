@@ -9,7 +9,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "{}: {} - {}".format(self.user, self.message, self.created)
+        return "{}: {} - {}".format(self.author, self.message, self.created)
 
 
 class Room(models.Model):

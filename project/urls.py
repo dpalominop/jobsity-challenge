@@ -8,4 +8,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', logout_then_login),
+    path('django-rq/', include('django_rq.urls'))
 ]
