@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from rest_framework import viewsets
 from .models import Room, Post
 from .serializers import RoomSerializer, PostSerializer
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def index(request):
-    return render(request, "adminlte/base.html", {})
+    return render(request, "chat.html", {})
 
 
 class RoomViewSet(viewsets.ModelViewSet):

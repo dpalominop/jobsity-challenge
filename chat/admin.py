@@ -9,3 +9,4 @@ class RoomAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     pass
+
