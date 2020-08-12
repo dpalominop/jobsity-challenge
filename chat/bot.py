@@ -3,6 +3,7 @@ from io import StringIO
 import requests
 import csv
 import django_rq
+from django.conf import settings
 
 
 def execute_command(command):
@@ -19,7 +20,7 @@ def execute_command(command):
     else:
         if command_data[0] == 'stock':
             try:
-                queue = django_rq.get_queue('default')
+                queue = django_rq.get_queue(settings.REDIS_SETTING)
                 job = queue.enqueue(get_stock, parameter=command_data[1])
                 response['job_id'] = str(job.key)[:-1].split(':')[2]
                 response['status'] = 'queued'
@@ -35,7 +36,7 @@ def execute_command(command):
 
 def command_status(job_id):
     response = {}
-    queue = django_rq.get_queue('default')
+    queue = django_rq.get_queue(settings.REDIS_SETTING)
     job = queue.fetch_job(job_id)
     response['author'] = 'Bot'
     created = datetime.now()

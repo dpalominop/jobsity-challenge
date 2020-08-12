@@ -20,6 +20,11 @@
                     </ul>
                 </div>
             </div>
+            <div class="box box-solid">
+                <div class="btn-panel">
+                    <a href="javascript:insert_command()" class="text-right btn send-message-btn pull-right" role="button"><i class="fa fa-gear"></i> Cmd: Stock</a>
+                </div>
+            </div>
         </div>
         <div class="col-md-9">
             <div class="box box-primary">
@@ -140,6 +145,10 @@
             else {
                 return true;
             }
+        }
+
+        function insert_command() {
+            $("#message").val("/stock=aapl.us").focus();
         }
     </script>
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+
+{% block nav_heading %}Room list{% endblock %}
+
+{% block nav_links %}
+    {% for room in rooms %}
+    <li>
+        <a href="{% url 'index_room' room.id %}">
+            <i class="fa fa-comments"></i> <span>{{ room.name }}</span>
+        </a>
+    </li>
+    {% endfor %}
+{% endblock %}
