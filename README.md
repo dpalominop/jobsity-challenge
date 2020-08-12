@@ -27,7 +27,7 @@ This guide is for setting up development instances.
 
 1. Clone repository.
 2. Create and activate a virtual environment.
-3. Start redis server or connect to one and check redis server configuration on ```.env``` (This file is created as a copy of ```.env.example```):
+3. Start redis server or connect to one and check redis server configuration on ```.env``` (This file has to be created as a copy of ```.env.example```):
 
     ```REDIS_HOST=localhost```
 
@@ -56,7 +56,7 @@ This guide is for setting up development instances.
 
 ### Step
 
-1. Check redis server configuration on ```.env``` (This file is created as a copy of ```.env.example```):
+1. Check redis server configuration on ```.env``` (This file has to be created as a copy of ```.env.example```):
 
     ```REDIS_HOST=redis```
 
