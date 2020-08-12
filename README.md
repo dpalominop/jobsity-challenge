@@ -18,20 +18,26 @@ This guide is for setting up development instances.
 
 ## Virtualenv
 
+### Tested Operative System:
+
+- Windows 10: Error in use of python OS library.
+- All linux-based os: OK
+
 ### Steps
 
 1. Clone repository.
 2. Create and activate a virtual environment.
+3. Start redis server or connect to one and check redis server configuration on ```.env``` (This file is created as a copy of ```.env.example```):
 
-3. Basic django configurations:
+    ```REDIS_HOST=localhost```
+
+4. Basic django configurations:
 
     ```pip3 install -r requirements.txt```
     
     ```python manage.py migrate```
     
     ```python manage.py collectstatic```
-
-4. Start redis server or connect to one.
 
 5. Start worker management:
 
@@ -43,10 +49,21 @@ This guide is for setting up development instances.
     
 ## Docker-Composer
 
+### Tested Operative System:
+
+- Windows 10: OK
+- All linux-based os: OK
+
 ### Step
 
-    asdas
-    asdsa
+1. Check redis server configuration on ```.env``` (This file is created as a copy of ```.env.example```):
 
-#Help?
+    ```REDIS_HOST=redis```
+
+2. Execute Docker Compose:
+    
+    ```docker-compose up```
+
+# Help?
+
 Please, contact me to: dapalominop@gmail.com

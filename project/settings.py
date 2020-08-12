@@ -1,8 +1,10 @@
-import os
+"""App configuration."""
+from os import environ, path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
+load_dotenv(path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -66,7 +68,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -107,9 +109,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = path.dirname(path.abspath(__file__))
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = path.join(PROJECT_ROOT, 'static')
 
 
 REST_FRAMEWORK = {
@@ -123,8 +125,8 @@ USE_TZ = False
 
 RQ_QUEUES = {
     'default': {
-        'HOST': 'localhost',
-        'PORT': 6379,
+        'HOST': environ.get('REDIS_HOST'),
+        'PORT': environ.get('REDIS_PORT'),
         'DB': 0,
     },
 }
