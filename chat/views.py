@@ -7,6 +7,7 @@ from .models import Room, Post
 from .serializers import RoomSerializer, PostSerializer, PostListSerializer
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+import json
 from . import bot
 
 
@@ -18,7 +19,10 @@ def index(request, room_id=None):
     }
     if not room_id:
         room_id = Room.objects.all()[0:1].get().id
+    for room in Room.objects.all():
+        room.users.remove(request.user)
     room = Room.objects.get(id=room_id)
+    room.users.add(request.user)
     context['room'] = room
     return render(request, "chat.html", context)
 
@@ -66,9 +70,11 @@ def get_posts(request):
         post_data.created_date = post_data.created.strftime('%Y-%m-%d')
         post_data.created_time = post_data.created.strftime('%H:%M')
     posts = PostListSerializer(posts_data, many=True)
+    users = list(room.users.values_list('username', flat=True))
     response = {
         'last_check': last_check,
         'posts': posts.data,
+        'users': json.dumps(users),
     }
     return JsonResponse(response)
 

@@ -14,6 +14,7 @@ class Post(models.Model):
 
 class Room(models.Model):
     name = models.CharField(max_length=50)
+    users = models.ManyToManyField(User)
 
     def __str__(self):
         return self.name

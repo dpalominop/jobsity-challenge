@@ -20,7 +20,6 @@ def execute_command(command):
         if command_data[0] == 'stock':
             try:
                 queue = django_rq.get_queue('default')
-                print(command_data[1])
                 job = queue.enqueue(get_stock, parameter=command_data[1])
                 response['job_id'] = str(job.key)[:-1].split(':')[2]
                 response['status'] = 'queued'
