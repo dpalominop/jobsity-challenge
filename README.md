@@ -1,6 +1,6 @@
 # Multiroom-chatbot
 
-Multiroom chatbot in Django with RQ.
+Multiroom chatbot using Django with RQ.
 
 ## Requeriments
 - python==3.6.8
@@ -47,7 +47,7 @@ This guide is for setting up development instances.
     
     ```python manage.py runserver```
     
-## Docker-Composer
+## Docker-Compose
 
 ### Tested Operative System:
 
@@ -63,6 +63,20 @@ This guide is for setting up development instances.
 2. Execute Docker Compose:
     
     ```docker-compose up```
+    
+## Default Users:
+1. *Administrator*:
+
+    - username = admin
+    - password = admin
+ 
+2. *User 01*:
+    - username = user01
+    - password = user01
+
+3. User 02:
+    - username = user02
+    - password = user02
 
 # Help?
 
